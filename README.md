@@ -4,7 +4,8 @@ Marsican is a neural network based colony counter.
 
 ## Sturcture of the Repository
 
-Functions used to clean the data can be found in cleaning_functions.py
+Process used to clean the data can be found in cleaning_functions.py
+Additional functions used can be found in the marsican_functions.py file.
 
 ## Data
 
