@@ -1,3 +1,9 @@
+import glob
+import os
+import shutil
+import sys
+
+import numpy as np
 
 def check_train_test_sizes(train_size, test_size):
     """
@@ -101,6 +107,8 @@ def make_folders(directory:str, folder_names:list):
     """
     if 'win32' in sys.platform:
         directory = directory + '\\'
+    if 'darwin' in sys.platform:
+        directory = directory + '/'
     for folder_name in folder_names:
         os.mkdir(directory +  folder_name)
 
@@ -129,6 +137,11 @@ def train_validation_imgsplit(wd,
         wd = wd + '\\'
         training_dir = training_dir + '\\'
         val_dir = val_dir + '\\'
+    elif 'darwin' in sys.platform:
+        all_images = glob.glob('*/*' + file_ext)
+        wd = wd + '/'
+        training_dir = training_dir + '/'
+        val_dir = val_dir + '/'
 
     training_size = int(len(all_images) * train_sz)
     val_size = int(len(all_images) * test_sz)
