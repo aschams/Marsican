@@ -113,6 +113,7 @@ def make_folders(directory:str, folder_names:list):
         os.mkdir(directory +  folder_name)
 
 def train_validation_imgsplit(wd,
+                              folder_names,
                               train_size=None,
                               val_size=None,
                               training_dir:str='training',
@@ -132,26 +133,28 @@ def train_validation_imgsplit(wd,
     """
     train_sz, test_sz = check_train_test_sizes(train_size, val_size)
 
-    if 'win32' in sys.platform:
-        all_images = glob.glob("*\\*" + file_ext)
-        wd = wd + '\\'
-        training_dir = training_dir + '\\'
-        val_dir = val_dir + '\\'
-    elif 'darwin' in sys.platform:
-        all_images = glob.glob('*/*' + file_ext)
-        wd = wd + '/'
-        training_dir = training_dir + '/'
-        val_dir = val_dir + '/'
+    # if 'win32' in sys.platform:
+    #     all_images = glob.glob("\\*" + file_ext)
+    #     wd = wd + '\\'
+    #     training_dir = training_dir + '\\'
+    #     val_dir = val_dir + '\\'
+    # elif 'darwin' in sys.platform:
+    #     all_images = glob.glob('*/*' + file_ext)
+    #     wd = wd + '/'
+    #     training_dir = training_dir + '/'
+    #     val_dir = val_dir + '/'
+    wd = wd + '/'
+    for folder in folder_names:
+        all_images = glob.glob(folder + '/*.png')
+        training_size = int(len(all_images) * train_sz)
+        val_size = int(len(all_images) * test_sz)
 
-    training_size = int(len(all_images) * train_sz)
-    val_size = int(len(all_images) * test_sz)
+        train_val_files = np.random.choice(all_images, size=training_size + val_size, replace=False)
+        train_files = train_val_files[:training_size]
+        val_files = train_val_files[training_size:]
 
-    train_val_files = np.random.choice(all_images, size=training_size + val_size, replace=False)
-    train_files = train_val_files[:training_size]
-    val_files = train_val_files[training_size:]
+        for train_file in train_files:
+            shutil.copyfile(wd + train_file, wd + training_dir + train_file)
 
-    for train_file in train_files:
-        shutil.copyfile(wd + train_file, wd + training_dir + train_file)
-
-    for val_file in val_files:
-        shutil.copyfile(wd + val_file, wd + val_dir + val_file)
+        for val_file in val_files:
+            shutil.copyfile(wd + val_file, wd + val_dir + val_file)
