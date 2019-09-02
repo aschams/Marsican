@@ -145,7 +145,7 @@ def train_validation_imgsplit(wd,
     #     val_dir = val_dir + '/'
     wd = wd + '/'
     for folder in folder_names:
-        all_images = glob.glob(folder + '/*.png')
+        all_images = glob.glob(folder + '/*' + file_ext)
         training_size = int(len(all_images) * train_sz)
         val_size = int(len(all_images) * test_sz)
 
