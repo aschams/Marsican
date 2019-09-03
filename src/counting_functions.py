@@ -6,8 +6,6 @@ import cv2
 import keras
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image, ImageDraw
-import scipy.ndimage as nd
 from scipy.stats import mode
 
 
