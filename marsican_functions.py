@@ -133,16 +133,6 @@ def train_validation_imgsplit(wd,
     """
     train_sz, test_sz = check_train_test_sizes(train_size, val_size)
 
-    # if 'win32' in sys.platform:
-    #     all_images = glob.glob("\\*" + file_ext)
-    #     wd = wd + '\\'
-    #     training_dir = training_dir + '\\'
-    #     val_dir = val_dir + '\\'
-    # elif 'darwin' in sys.platform:
-    #     all_images = glob.glob('*/*' + file_ext)
-    #     wd = wd + '/'
-    #     training_dir = training_dir + '/'
-    #     val_dir = val_dir + '/'
     wd = wd + '/'
     for folder in folder_names:
         all_images = glob.glob(folder + '/*' + file_ext)
