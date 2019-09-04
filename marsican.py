@@ -80,21 +80,10 @@ def upload_file():
             print('\n'*2, filename, '\n'*2)
             file_name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_name)
-
-            load_keras_model()
-            global graph
-            graph = tf.get_default_graph()
-            with graph.as_default():
-                mcf.complete_fit(file_name,
-                                 template='img/colonies/MJF465_600mOsm_40_colony.jpg',
-                                 res_img1='who_cares.jpg',
-                                 res_img2='img/results/' + filename,
-                                 model_=model)
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
+            return redirect(url_for('crop_img', filename=filename, file_name=file_name))
     return '''
     <!doctype html>
-    <title>Upload new File</title>
+    <title>Upload Plate Image</title>
     <h1>Upload new File</h1>
     <form method=post enctype=multipart/form-data>
       <input type=file name=file>
@@ -103,6 +92,46 @@ def upload_file():
     '''
 
 
-@app.route('/uploads/<filename>')
+@app.route('/uploads/<filename>', methods=['GET', 'POST'])
+def crop_img(filename):
+        file_name = request.args.get('file_name')
+        if request.method == 'POST':
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file''')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                print('\n'*2, filename, '\n'*2)
+                file_name2 = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_name2)
+                load_keras_model()
+                global graph
+                graph = tf.get_default_graph()
+                with graph.as_default():
+                    mcf.complete_fit(file_name,
+                                     template=file_name2,
+                                     res_img1='who_cares.jpg',
+                                     res_img2='img/results/' + filename,
+                                     model_=model)
+                return redirect(url_for('uploaded_file',
+                                        filename=filename))
+        return '''
+        <!doctype html>
+        <title>Upload new File</title>
+        <h1>Upload Template</h1>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file>
+          <input type=submit value=Upload>
+        </form>
+        '''
+
+@app.route('/results/<filename>')
 def uploaded_file(filename):
     return send_from_directory('img/results/', filename)
