@@ -6,5 +6,4 @@ matplotlib
 opencv-python-headless
 numpy
 scipy
-Pillow
 werkzeug
