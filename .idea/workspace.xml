@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1fa9119-032a-4175-b6a7-3e0896abe995" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results/MJF465_600mOsm_40.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results/MJF465_600mOsm_89.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_600mOsm_40.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_600mOsm_89.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_800mOsm_198.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_800mOsm_283_or_317_.JPG" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/marsican.py" afterPath="$PROJECT_DIR$/marsican.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="marsican.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="marsican.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/marsican.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="609">
@@ -27,6 +21,16 @@
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,6 +59,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>upload</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -63,6 +72,7 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/marsican.py" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -180,6 +190,14 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

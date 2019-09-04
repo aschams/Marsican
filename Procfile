@@ -1,1 +1,1 @@
-web: gunicorn marsican:app
+web: gunicorn --workers=5 marsican:app
