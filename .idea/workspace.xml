@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1fa9119-032a-4175-b6a7-3e0896abe995" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/results/MJF465_600mOsm_40.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/results/MJF465_600mOsm_89.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_600mOsm_40.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_600mOsm_89.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_800mOsm_198.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/MJF465_800mOsm_283_or_317_.JPG" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/marsican.py" afterPath="$PROJECT_DIR$/marsican.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +22,8 @@
       <file leaf-file-name="marsican.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/marsican.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="81" column="32" lean-forward="false" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+            <state relative-caret-position="609">
+              <caret line="88" column="47" lean-forward="false" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -170,8 +175,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/marsican.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="81" column="32" lean-forward="false" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+        <state relative-caret-position="609">
+          <caret line="88" column="47" lean-forward="false" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

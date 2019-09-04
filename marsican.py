@@ -14,7 +14,7 @@ import tensorflow as tf
 sys.path.append('src')
 import counting_functions as mcf
 
-UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'uploads/')
+UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'img/uploads/')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
@@ -86,9 +86,9 @@ def upload_file():
             graph = tf.get_default_graph()
             with graph.as_default():
                 mcf.complete_fit(file_name,
-                                 template='/Volumes/Samsung_T5/Segmentation_Data/Sukharev_Lab_Data/colonies/MJF465_600mOsm_40_colony.jpg',
+                                 template='img/colonies/MJF465_600mOsm_40_colony.jpg',
                                  res_img1='who_cares.jpg',
-                                 res_img2='results/' + filename,
+                                 res_img2='img/results/' + filename,
                                  model_=model)
             return redirect(url_for('uploaded_file',
                                     filename=filename))
@@ -105,4 +105,4 @@ def upload_file():
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return send_from_directory('results/', filename)
+    return send_from_directory('img/results/', filename)
