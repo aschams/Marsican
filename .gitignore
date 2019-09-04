@@ -104,8 +104,6 @@ venv.bak/
 .mypy_cache/
 
 data
-uploads
-results
 
 *.png
 who_cares.jpg
