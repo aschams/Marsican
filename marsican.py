@@ -87,7 +87,8 @@ def upload_file():
     <h1>Upload new File</h1>
     <form method=post enctype=multipart/form-data>
       <input type=file name=file>
-      <input type=submit value=Uploadz>
+      <input type="range" min="0" max="100" name="threshold_slider"/>
+      <input type=submit value=Upload>
     </form>
     '''
 
@@ -95,6 +96,8 @@ def upload_file():
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
 def crop_img(filename):
         file_name = request.args.get('file_name')
+        threshold_slider = request.form('threshold_slider')
+        print("Threshold slider type:", type(threshold_slider))
         if request.method == 'POST':
             # check if the post request has the file part
             if 'file' not in request.files:
@@ -119,7 +122,8 @@ def crop_img(filename):
                                      template=file_name2,
                                      res_img1='who_cares.jpg',
                                      res_img2='img/results/' + filename,
-                                     model_=model)
+                                     model_=model,
+                                     threshold=threshold_slider/100)
                 return redirect(url_for('uploaded_file',
                                         filename=filename))
         return '''
