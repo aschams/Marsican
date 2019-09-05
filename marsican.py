@@ -19,7 +19,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+app.debug = True
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -87,7 +87,6 @@ def upload_file():
     <h1>Upload new File</h1>
     <form method=post enctype=multipart/form-data>
       <input type=file name=file>
-      <input type="range" min="0" max="100" name="threshold_slider"/>
       <input type=submit value=Upload>
     </form>
     '''
@@ -112,6 +111,7 @@ def crop_img(filename):
                 print('\n'*2, filename, '\n'*2)
                 file_name2 = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 file.save(file_name2)
+                threshold=int(request.form['threshold'])
                 load_keras_model()
                 global graph
                 graph = tf.get_default_graph()
@@ -120,7 +120,8 @@ def crop_img(filename):
                                      template=file_name2,
                                      res_img1='who_cares.jpg',
                                      res_img2='img/results/' + filename,
-                                     model_=model)
+                                     model_=model,
+                                     threshold=threshold/100)
                 return redirect(url_for('uploaded_file',
                                         filename=filename))
         return '''
@@ -129,6 +130,7 @@ def crop_img(filename):
         <h1>Upload Template</h1>
         <form method=post enctype=multipart/form-data>
           <input type=file name=file>
+          <input type="number" min="1" max="100" name="threshold" value=60/>
           <input type=submit value=Upload>
         </form>
         '''
