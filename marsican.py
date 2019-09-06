@@ -101,16 +101,7 @@ def crop_img(filename):
 
                 return redirect(url_for('uploaded_file',
                                         filename=filename, tcc=tcc[0]))
-        return '''
-        <!doctype html>
-        <title>Upload new File</title>
-        <h1>Upload Template</h1>
-        <form method=post enctype=multipart/form-data>
-          <input type=file name=file>
-          <input type="number" min="1" max="100" name="threshold" value=60/>
-          <input type=submit value=Upload>
-        </form>
-        '''
+        return render_template("template_upload.html", )
 
 @app.route('/results/<filename>/<tcc>')
 def uploaded_file(filename, tcc):
