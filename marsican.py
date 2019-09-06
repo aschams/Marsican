@@ -98,6 +98,7 @@ def crop_img(filename):
                                            model_=model,
                                            threshold=threshold/100)
                 K.clear_session()
+
                 return redirect(url_for('uploaded_file',
                                         filename=filename, tcc=tcc[0]))
         return '''
