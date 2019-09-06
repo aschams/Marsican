@@ -293,7 +293,7 @@ def count_colonies_multi_rot(img:np.ndarray,
     return num_array
 
 
-def complete_fit(filepath:str, template:str, res_img1:str, res_img2:str,model_, threshold:float=0.6):
+def complete_fit(filepath:str, template:str, res_img1:str, res_img2:str, model_, threshold:float=0.6):
     """
     Performs the complete process of:
         1. Reading the image
@@ -342,5 +342,4 @@ def complete_fit(filepath:str, template:str, res_img1:str, res_img2:str,model_, 
         col_counts.append(PRED_NUM_COL[pred])
 
     create_final_image(img_rgb2, merged_locs, c_counts=col_counts, res_img=res_img2)
-    print(tot_col_count)
-    return colonies
+    return (tot_col_count, colonies)
