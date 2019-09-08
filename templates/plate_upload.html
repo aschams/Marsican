@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Marsican Colony Counter</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="shortcut icon" href="">
+</head>
+<body>
+<h1>Upload Plate Image</h1>
+  <form method=post enctype=multipart/form-data class='submit_form'>
+    <label for='file'>File Name</label>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+  </form>
+
+  <div class="disclaimer"> Marsican is a project by Anthony Schams for Flatiron School.
+      It should not be used as a substitute for counting colonies by hand or using a
+      program such as
+      <a href="http://opencfu.sourceforge.net/" target='_blank'>OpenCFU</a> or
+      <a href='https://www.nist.gov/services-resources/software/nists-integrated-colony-enumerator-nice' target='_blank'>NICE</a>.
+      All source code can be found <a href="https://github.com/aschams/Marsican" target='_blank'>here</a>.
+  </div>
+</body>
+</html>

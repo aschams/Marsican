@@ -1,0 +1,33 @@
+body{
+  background: #efcffa;
+  color: black;
+}
+
+h1{
+  text-align: center;
+}
+
+.submit_form{
+  position: absolute;
+  left: 40%;
+
+}
+
+.disclaimer{
+  position: absolute;
+  bottom: 10px;
+  width: 50%;
+  left: 25%;
+}
+
+a:link{
+  color:black;
+}
+
+a:visited{
+  color: #8a8000;
+}
+
+a:hover{
+  color: red;
+}

@@ -57,15 +57,7 @@ def upload_file():
             file_name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_name)
             return redirect(url_for('crop_img', filename=filename, file_name=file_name))
-    return '''
-    <!doctype html>
-    <title>Upload Plate Image</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template("plate_upload.html")
 
 
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
