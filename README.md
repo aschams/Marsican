@@ -11,10 +11,15 @@ Contains an hdf5 file containing the model used. It is called balanced_gray_clas
 ### Notebooks
 This project includes 6 notebooks performing different functions.
 Creating_Train-validation_split.ipynb	is used to create the training/validation split for training the model. Because only one model is being trained, an additional test set is not necessary.
+
 Data_Transferring.ipynb	contains the code used to build folders that would house the data, prior to training/validation split. 
-Detect_Circles.ipynb contains code used to locate the plate (functionality not used in final model), testing small circle detection (functionality dropped in final model) and testing of template matching
+
+Detect_Circles.ipynb contains code used to locate the plate (functionality not used in final model), testing small circle detection (functionality dropped in final model) and testing of template matching.
+
 EDA_Cleaning.ipynb contains code used to access and visualize full plate images from [MicroBIA](http://www.microbia.org/index.php/resources)
-Model.ipynb	includes all code used to train the model. The model used is the final model in this notebook
+
+Model.ipynb	includes all code used to train the model. The model used is the final model in this notebook.
+
 connecting_to_aws.ipynb contains the code used to connect to aws and upload the full-plate images to AWS. These images ended up not being used.
 
 ### img
