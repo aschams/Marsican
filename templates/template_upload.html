@@ -10,10 +10,13 @@
   <h1>Upload Template</h1>
   <form method=post enctype=multipart/form-data class='submit_form'>
     <label for="file">File Name</label>
-    <input type=file name=file>
+    <input type=file name=file title='' value=' '/>
+    <br>
     <label for="threshold"><i class='threshold_num'></i>Matching Threshold</label>
-    <input type="number" min="1" max="100" name="threshold" value=60/>
-    <input type=submit value=Upload>
+    <br>
+    <input type="number" min="1" max="100" name="threshold" value='60'/>
+    <br>
+    <input type=submit value=Upload class='submit_button'>
 </form>
 
 <div class="disclaimer"> Marsican is a project by Anthony Schams for Flatiron School.

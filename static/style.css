@@ -10,7 +10,13 @@ h1{
 .submit_form{
   position: absolute;
   left: 40%;
+  text-align:center;
 
+}
+
+.submit_button{
+  width: 100px;
+  margin: 0 auto;
 }
 
 .disclaimer{
