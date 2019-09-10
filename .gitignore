@@ -109,3 +109,5 @@ data
 who_cares.jpg
 *.jpg
 
+.DS_Store
+
