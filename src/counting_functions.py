@@ -320,7 +320,6 @@ def complete_fit(filepath:str, template:str, res_img1:str, res_img2:str, model_,
     img = cv2.imread(filepath,0)
     img_rgb = cv2.imread(filepath)
     img_rgb2 = img_rgb.copy()
-    img_rgb3 = img_rgb.copy()
     template_ = cv2.imread(template, 0)
     w, h = template_.shape[::-1]
     loc = create_init_image(img_rgb, template_, threshold=threshold, res_img=res_img1)
