@@ -29,9 +29,17 @@ Model.ipynb	includes all code used to train the model. The final model used is t
 
 connecting_to_aws.ipynb contains the code used to connect to aws and upload the full-plate images to AWS. These images ended up not being used.
 
+### sample_data
+
+Contains a small amount of data to showcase the full pipeline. blood_agar_imgs contain sample images from MicroBIA, while clear_agar_and_zero_colony_imgs contains images from the Sukharev group. 
+
+labelled_imgs contains images in their labelled folders. The stratified_data folder contains the images from the other folders in labelled_imgs directory and has them split into a training and validation set for use in Keras.
+
+The web_app directory contains sample data that can be directly input into the Marsican web app. The plate folder contains 2 full plate images and the colony folder contains the 2 corresponding template colonies for matching.
+
 ### img
 
-All three folders contain example images to use with the Marsican web app.
+Folders used by the Marsican web app.
 
 ### src
 Functions used to clean the data can be found in marsican_functions.py
