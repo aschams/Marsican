@@ -11,7 +11,11 @@ Counting colonies is a common activity in biology, and can be slow, boring, and 
 Contains an hdf5 file containing the model used. It is called balanced_gray_classes.hdf5 because 1. the model was trained using balanced class weights and 2. images are converted to grayscale automatically prior to being fed into the model.
 
 ### Notebooks
-This project includes 6 notebooks performing different functions.
+This project includes 7 notebooks performing different functions.
+
+technical_notebook.ipynb goes through the full process of analysis, from moving the data into the correct folders for the training/validation split to running the model. It works on a small subset of the data, and exists to showcase the pipeline used. 
+
+#### Dirty Notebooks
 
 Creating_Train-validation_split.ipynb	is used to create the training/validation split for training the model. Because only one model is being trained, an additional test set is not necessary.
 
@@ -27,10 +31,13 @@ connecting_to_aws.ipynb contains the code used to connect to aws and upload the 
 
 ### img
 
-All three folders contain example images to use with Marsican.
+All three folders contain example images to use with the Marsican web app.
 
 ### src
 Functions used to clean the data can be found in marsican_functions.py
+
+Functions used to augment the data prior to fitting the model can be found in augment_functions.py
+
 Functions used to analyze the data can be found in the counting_functions.py file.
 
 ### static/templates
