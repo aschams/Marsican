@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def augment_img(img:str, filepath:str, k:list=[0], lr:bool=True, periods:int=3, slashes:int=4):
+def augment_img(img:str, filepath:str, k:list=[0], lr:bool=True):
     """
     Inputs:
         img: str; containing filepath to the image being augmented
@@ -10,8 +10,6 @@ def augment_img(img:str, filepath:str, k:list=[0], lr:bool=True, periods:int=3, 
             ex: function will produce len(k) images. [0, 1, 3] will produce 1 image with no rotation,
                 1 image with 1 90 degree rotation, and 1 image with 3 90 degree (or 270) degree rotation.
         lr: bool; Whether or not to flip the image left-right.
-        periods: int; number of periods in img filepath. Specifies which segment to find the filename in.
-        slashes: int; number of slashes in img filepath. Used to find the filename.
     Returns: None
     """
     filename = img.split('.')[-2].split('/')[-1]
@@ -27,7 +25,7 @@ def augment_img(img:str, filepath:str, k:list=[0], lr:bool=True, periods:int=3, 
             flip_lr_rot = np.rot90(img_arr, rot, axes=(0,1))
             cv2.imwrite(f'{filepath}/{filename}_rot{rot}_{0}.png', flip_lr_rot)
 
-def augment_img_both(img:str, filepath:str, k:list=[0], periods:int=3, slashes:int=4):
+def augment_img_both(img:str, filepath:str, k:list=[0]):
     """
     Performs data augmentation on an image both with and without a left-right flip.
     Inputs:
@@ -38,5 +36,5 @@ def augment_img_both(img:str, filepath:str, k:list=[0], periods:int=3, slashes:i
                 1 image with 1 90 degree rotation, and 1 image with 3 90 degree (or 270) degree rotation.
     Returns: None
     """
-    augment_img(img, filepath, k, periods, slashes)
-    augment_img(img, filepath, k, lr=False, periods=periods, slashes=slashes)
+    augment_img(img, filepath, k)
+    augment_img(img, filepath, k, lr=False)
