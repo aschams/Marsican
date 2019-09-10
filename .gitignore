@@ -105,9 +105,7 @@ venv.bak/
 
 data
 
-*.png
 who_cares.jpg
-*.jpg
 
 .DS_Store
 
