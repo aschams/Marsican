@@ -78,6 +78,7 @@ def crop_img(filename):
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file_name2 = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_name2)
                 threshold=int(request.form['threshold'])
                 load_keras_model()
                 global graph
