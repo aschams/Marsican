@@ -2,7 +2,30 @@
 
 Marsican is a neural network based colony counter. It uses template matching to find colonies, and then a neural network to count them. It can be launched locally or be found on [Heroku](marsican.herokuapp.com).
 
-Counting colonies is a common activity in biology, and can be slow, boring, and take up a significant amount of time if a large number of plates must be counted. The goal of Marsican is to automate this counting process, saving time and effort in counting. Because Marsican is a small personal project, I have set the goal of counting plates with up to 50 colonies within 10% accuracy. Experimentally, Marsican is most successful counting plates with spread out, consistently shaped/sized colonies, and can likely count higher than this.
+Counting colonies is a common activity in biological research, and can be slow, boring, and take up a significant amount of time if a large number of plates must be counted. The goal of Marsican is to automate this counting process, saving time and effort in counting. Because Marsican is a small personal project, I have set the goal of counting plates with up to 50 colonies within 10% accuracy. Experimentally, Marsican is most successful counting plates with spread out, consistently shaped/sized colonies, and can likely count higher than this.
+
+## Data
+
+Data used to train the model was acquired from [MicroBIA](http://www.microbia.org/index.php/resources) (The Segments Enumeration Dataset) and the Sukharev Group at the University of Maryland, College Park.
+
+Data from MicroBIA included blood agar images of 1-6 colonies per image. There are also images for outlier colonies, in which there are more than 6 colonies and confluential colonies, in which the number of colonies is not countable by humans. This project makes use of all these images except confluential colonies images. 
+
+A small fraction of the data used can be found in the sample_data folder, which is described below.
+
+
+## Using Marsican
+
+### Input
+Marsican works using two images: the full plate image and a subimage of a single colony from the plate (or another similar looking plate) to act as a template. This single colony can be cropped from the base image using any simple photo editing software or web app. 
+
+### Algorithm
+The computer then searches the full plate image for subimages that closely match the colony template. The user provides a number to act as a threshold for how closely a subimage matches the template to be labelled a match. This however leads to a problem, in which the computer finds a match, moves one pixel to the right and finds another match to the template. Marsican therefore will search the full image, find all these heavily overlapping matches, and then attempt to merge boundary boxes that are close to one another. This minimizes the total number as well as the overlap between the different boxes. Each of these boxes are then passed individually through a neural network to count the number of colonies in each box. Marsican then sums up these counts, and returns an annotated image with bounding boxes around found colonies and colony counts for each box. The total colony count is in the title of the returned image.
+
+### Installing Marsican
+
+Marsican can most efficiently be run by cloning this repository, installing the necessary packages in requirements.txt, and running it through the command line. It is important to note that the web app is in the marsican.py file instead of an app.py file. It is therefore necessary to run the command `export FLASK_APP=marsican.py` prior to running the app using `flask run`.
+
+Marsican can also be found on [Heroku](marsican.herokuapp.com), although sometimes this does not work well because it's on a free server and Tensorflow takes up a lot of the allocated memory.
 
 ## Sturcture of the Repository
 
@@ -27,7 +50,7 @@ EDA_Cleaning.ipynb contains code used to access and visualize full plate images 
 
 Model.ipynb	includes all code used to train the model. The final model used is the last model in this notebook. The model is taken from [A. Ferrari, et al., Bacterial colony counting with Convolutional Neural Networks in Digital Microbiology Imaging, Pattern Recognition (2016),](https://www.semanticscholar.org/paper/Bacterial-colony-counting-with-Convolutional-Neural-Ferrari-Lombardi/646cc8ef9bc7b41fb6297c45a092b5628d5da5d0) The only adjustment made was using batch normalization instead of Local Response Normalization because LRN is not natively supported in Keras.
 
-connecting_to_aws.ipynb contains the code used to connect to aws and upload the full-plate images to AWS. These images ended up not being used.
+connecting_to_aws.ipynb contains the code used to connect to aws and upload the full plate images to AWS. These images ended up not being used on AWS.
 
 ### sample_data
 
@@ -52,6 +75,4 @@ Functions used to analyze the data can be found in the counting_functions.py fil
 
 Contain the css and html of the web app.
 
-## Data
 
-Data used to train the model was acquired from [MicroBIA](http://www.microbia.org/index.php/resources) (The Segments Enumeration Dataset) and the Sukharev Group at the University of Maryland, College Park.
