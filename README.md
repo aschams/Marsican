@@ -79,6 +79,8 @@ Contain the css and html of the web app.
 
 Testing Marsican on the plates/colonies in the sample_data folder, we get mixed results. On 3 of the images, the goal of being within 10% of the true count (from humans) is met. These numbers are met with thresholds between 50 and 60. Marsican fails to meet this mark on 2 of the images, with errors of approximately 20%. Interestingly, Marsican consistently undercounts, often missing small colonies near the edges of the dish or failing to recognize small colonies close to colonies it does recognize. It also struggles with higher number of colonies in a bounding box, likely due to the lack of training data for these high counts on clear agar plates. This could be because the colonies are small or due to shading/glare due to the quality of the photograph. 
 
+Testing on 10 plates from the Sukharev lab, of which 5 of them are the sample_data plates, Marsican has an error rate of roughly 10% per plate.
+
 ## Looking Forward
 
 In the future, I would like to:
