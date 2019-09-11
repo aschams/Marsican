@@ -2,7 +2,7 @@
 
 Marsican is a neural network based colony counter. It uses template matching to find colonies, and then a neural network to count them. It can be launched locally or be found on [Heroku](marsican.herokuapp.com).
 
-Counting colonies is a common activity in biological research, and can be slow, boring, and take up a significant amount of time if a large number of plates must be counted. The goal of Marsican is to automate this counting process, saving time and effort in counting. Because Marsican is a small personal project, I have set the goal of counting plates with up to 50 colonies within 10% accuracy. Experimentally, Marsican is most successful counting plates with spread out, consistently shaped/sized colonies, and can likely count higher than this.
+Counting colonies is a common activity in biological research, and can be slow, boring, and take up a significant amount of time if a large number of plates must be counted. The goal of Marsican is to automate this counting process, saving time and effort in counting. Because Marsican is a small personal project, I have set the goal of counting plates with up to 50 colonies within 10% accuracy. Experimentally, Marsican is most successful counting plates with spread out, consistently shaped/sized colonies, and can likely count higher than this under ideal conditions.
 
 ## Data
 
@@ -75,4 +75,12 @@ Functions used to analyze the data can be found in the counting_functions.py fil
 
 Contain the css and html of the web app.
 
+## Results
 
+Testing Marsican on the plates/colonies in the sample_data folder, we get mixed results. On 3 of the images, the goal of being within 10% of the true count (from humans) is met. These numbers are met with thresholds between 50 and 60. Marsican fails to meet this mark on 2 of the images, with errors of approximately 20%. Interestingly, Marsican consistently undercounts, often missing small colonies near the edges of the dish or failing to recognize small colonies close to colonies it does recognize. It also struggles with higher number of colonies in a bounding box, likely due to the lack of training data for these high counts on clear agar plates. This could be because the colonies are small or due to shading/glare due to the quality of the photograph. 
+
+## Looking Forward
+
+In the future, I would like to:
+1. Increase the amount of training data on clear agar plates, specifically with >2 colonies.
+2. Allow multiple templates to be included to help identify different shapes/sizes of colonies or multiple species on a plate. 
