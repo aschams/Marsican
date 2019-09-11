@@ -58,7 +58,7 @@ Contains a small amount of data to showcase the full pipeline. blood_agar_imgs c
 
 labelled_imgs contains images in their labelled folders. The stratified_data folder contains the images from the other folders in labelled_imgs directory and has them split into a training and validation set for use in Keras.
 
-The web_app directory contains sample data that can be directly input into the Marsican web app. The plate folder contains 2 full plate images and the colony folder contains the 2 corresponding template colonies for matching.
+The web_app directory contains sample data that can be directly input into the Marsican web app. The plate folder contains 5 full plate images and the colony folder contains the 5 corresponding template colonies for matching.
 
 ### img
 
@@ -84,3 +84,8 @@ Testing Marsican on the plates/colonies in the sample_data folder, we get mixed 
 In the future, I would like to:
 1. Increase the amount of training data on clear agar plates, specifically with >2 colonies.
 2. Allow multiple templates to be included to help identify different shapes/sizes of colonies or multiple species on a plate. 
+
+
+## Presentations
+
+A brief slideshow for this project can be found [here](https://docs.google.com/presentation/d/1IhJfe2dy0ikVc5Ty9H7sdmsrilNvJNPGlKLypF4O97w/edit?usp=sharing).
