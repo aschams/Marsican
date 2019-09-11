@@ -8,7 +8,7 @@ Counting colonies is a common activity in biological research, and can be slow, 
 
 Data used to train the model was acquired from [MicroBIA](http://www.microbia.org/index.php/resources) (The Segments Enumeration Dataset) and the Sukharev Group at the University of Maryland, College Park.
 
-Data from MicroBIA included blood agar images of 1-6 colonies per image. There are also images for outlier colonies, in which there are more than 6 colonies and confluential colonies, in which the number of colonies is not countable by humans. This project makes use of all these images except confluential colonies images. 
+Data from MicroBIA included blood agar images of 1-6 colonies per image. There are also images for outlier colonies, in which there are more than 6 colonies and confluential colonies, in which the number of colonies is not countable by humans. This project makes use of all these images except confluential colonies images. Data from the Sukharev Group consisted of full plate images. Regions containing 0 colonies, including clear agar, the plate, and the surrounding countertop were cropped to provide a set of images containing 0 colonies. Single and close pairs of colonies were then cropped, which constitute the 1 colony and 2 colony images on clear plates used. All cropping was done using PhotoscapeX.
 
 A small fraction of the data used can be found in the sample_data folder, which is described below.
 
@@ -16,9 +16,11 @@ A small fraction of the data used can be found in the sample_data folder, which 
 ## Using Marsican
 
 ### Input
+
 Marsican works using two images: the full plate image and a subimage of a single colony from the plate (or another similar looking plate) to act as a template. This single colony can be cropped from the base image using any simple photo editing software or web app. 
 
 ### Algorithm
+
 The computer then searches the full plate image for subimages that closely match the colony template. The user provides a number to act as a threshold for how closely a subimage matches the template to be labelled a match. This however leads to a problem, in which the computer finds a match, moves one pixel to the right and finds another match to the template. Marsican therefore will search the full image, find all these heavily overlapping matches, and then attempt to merge boundary boxes that are close to one another. This minimizes the total number as well as the overlap between the different boxes. Each of these boxes are then passed individually through a neural network to count the number of colonies in each box. Marsican then sums up these counts, and returns an annotated image with bounding boxes around found colonies and colony counts for each box. The total colony count is in the title of the returned image.
 
 ### Installing Marsican
@@ -48,7 +50,7 @@ Detect_Circles.ipynb contains code used to locate the plate (functionality not u
 
 EDA_Cleaning.ipynb contains code used to access and visualize full plate images from [MicroBIA](http://www.microbia.org/index.php/resources)
 
-Model.ipynb	includes all code used to train the model. The final model used is the last model in this notebook. The model is taken from [A. Ferrari, et al., Bacterial colony counting with Convolutional Neural Networks in Digital Microbiology Imaging, Pattern Recognition (2016),](https://www.semanticscholar.org/paper/Bacterial-colony-counting-with-Convolutional-Neural-Ferrari-Lombardi/646cc8ef9bc7b41fb6297c45a092b5628d5da5d0) The only adjustment made was using batch normalization instead of Local Response Normalization because LRN is not natively supported in Keras.
+Model.ipynb	includes all code used to train the model. The final model used is the last model in this notebook. The model is taken from [A. Ferrari, et al., Bacterial colony counting with Convolutional Neural Networks in Digital Microbiology Imaging, Pattern Recognition (2016),](https://www.semanticscholar.org/paper/Bacterial-colony-counting-with-Convolutional-Neural-Ferrari-Lombardi/646cc8ef9bc7b41fb6297c45a092b5628d5da5d0) The only adjustment made was using batch normalization instead of Local Response Normalization because LRN is not natively supported in Keras. This model was used because it is currently (Sept. 2019) the best model that counts colonies through the use of neural networks.
 
 connecting_to_aws.ipynb contains the code used to connect to aws and upload the full plate images to AWS. These images ended up not being used on AWS.
 
@@ -58,7 +60,7 @@ Contains a small amount of data to showcase the full pipeline. blood_agar_imgs c
 
 labelled_imgs contains images in their labelled folders. The stratified_data folder contains the images from the other folders in labelled_imgs directory and has them split into a training and validation set for use in Keras.
 
-The web_app directory contains sample data that can be directly input into the Marsican web app. The plate folder contains 2 full plate images and the colony folder contains the 2 corresponding template colonies for matching.
+The web_app directory contains sample data that can be directly input into the Marsican web app. The plate folder contains 5 full plate images and the colony folder contains the 5 corresponding template colonies for matching.
 
 ### img
 
@@ -79,8 +81,15 @@ Contain the css and html of the web app.
 
 Testing Marsican on the plates/colonies in the sample_data folder, we get mixed results. On 3 of the images, the goal of being within 10% of the true count (from humans) is met. These numbers are met with thresholds between 50 and 60. Marsican fails to meet this mark on 2 of the images, with errors of approximately 20%. Interestingly, Marsican consistently undercounts, often missing small colonies near the edges of the dish or failing to recognize small colonies close to colonies it does recognize. It also struggles with higher number of colonies in a bounding box, likely due to the lack of training data for these high counts on clear agar plates. This could be because the colonies are small or due to shading/glare due to the quality of the photograph. 
 
+Testing on 10 plates from the Sukharev lab, of which 5 of them are the sample_data plates, Marsican has an error rate of roughly 10% per plate.
+
 ## Looking Forward
 
 In the future, I would like to:
 1. Increase the amount of training data on clear agar plates, specifically with >2 colonies.
 2. Allow multiple templates to be included to help identify different shapes/sizes of colonies or multiple species on a plate. 
+
+
+## Presentation
+
+A brief slideshow for this project can be found [here](https://docs.google.com/presentation/d/1IhJfe2dy0ikVc5Ty9H7sdmsrilNvJNPGlKLypF4O97w/edit?usp=sharing).
