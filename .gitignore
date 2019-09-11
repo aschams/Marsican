@@ -110,3 +110,8 @@ who_cares-crop.jpg
 
 .DS_Store
 
+img/.DS_Store
+
+img/results/*.jpg
+img/uploads/*.jpg
+
