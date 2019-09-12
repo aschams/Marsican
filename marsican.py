@@ -86,7 +86,7 @@ def crop_img(filename):
                 with graph.as_default():
                     tcc = mcf.complete_fit(file_name,
                                            template=file_name2,
-                                           res_img1='who_cares.jpg',
+                                           res_img1='img/results/img1_' + filename,
                                            res_img2='img/results/' + filename,
                                            model_=model,
                                            threshold=threshold/100)
