@@ -19,9 +19,21 @@ A small fraction of the data used can be found in the sample_data folder, which 
 
 Marsican works using two images: the full plate image and a subimage of a single colony from the plate (or another similar looking plate) to act as a template. This single colony can be cropped from the base image using any simple photo editing software or web app. 
 
+![Full Plate](img/uploads/MJF465_600mOsm_40.JPG)
+Marsican takes a full plate in an image. Solid color background is largely preferred.
+
+![Template Colony](img/uploads/MJF465_600mOsm_40_colony.jpg)
+The user must also provide a single colony to act as a template for matching.
+
 ### Algorithm
 
-The computer then searches the full plate image for subimages that closely match the colony template. The user provides a number to act as a threshold for how closely a subimage matches the template to be labelled a match. This however leads to a problem, in which the computer finds a match, moves one pixel to the right and finds another match to the template. Marsican therefore will search the full image, find all these heavily overlapping matches, and then attempt to merge boundary boxes that are close to one another. This minimizes the total number as well as the overlap between the different boxes. Each of these boxes are then passed individually through a neural network to count the number of colonies in each box. Marsican then sums up these counts, and returns an annotated image with bounding boxes around found colonies and colony counts for each box. The total colony count is in the title of the returned image.
+The computer then searches the full plate image for subimages that closely match the colony template. The user provides a number to act as a threshold for how closely a subimage matches the template to be labelled a match. This however leads to a problem, in which the computer finds a match, moves one pixel to the right and finds another match to the template. 
+
+![](img/results/first_img.jpg)
+
+Red boxes indicate spaces where a match was found. Some boxes are thicker than others, which is evidence that multiple neighboring matches are made. Marsican therefore will search the full image, find all these heavily overlapping matches, and then attempt to merge boundary boxes that are close to one another. This minimizes the total number as well as the overlap between the different boxes. Each of these boxes are then passed individually through a neural network to count the number of colonies in each box. Marsican then sums up these counts, and returns an annotated image with bounding boxes around found colonies and colony counts for each box. The total colony count is in the title of the returned image.
+
+![](img/results/MJF465_600mOsm_40_colony.jpg)
 
 ### Installing Marsican
 
