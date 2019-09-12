@@ -23,6 +23,7 @@ Marsican works using two images: the full plate image and a subimage of a single
 Marsican takes a full plate in an image. Solid color background is largely preferred.
 
 ![Template Colony](img/uploads/MJF465_600mOsm_40_colony.jpg)
+
 The user must also provide a single colony to act as a template for matching.
 
 ### Algorithm
